@@ -7,14 +7,17 @@ $emailn=$_POST["emailn"];
 $date=$_POST["date"];
 $passwordn=$_POST["passwordn"];
 }
-$req="select from login where Email_com='emailn'";
-$req=mysqli_query($cnx,$req);
-$n=mysqli_num_rows($req);
+$req="select * from login where Email_com='emailn'";
+$res=mysqli_query($cnx,$req);
+$n=mysqli_num_rows($res);
 if($n!=0)
-echo'<h1 id=h1ph>'."insertion échoué".'</h1>';
+echo"compte existant";
 else{
-    $req="insert into compte values('$nom_com','$Prenom_com','$Email_com','$date_com');
-    '<h1 id=h1ph>'."insertion avec succéé".'</h1>';
+    $req="insert into compte values('$nom','$Prenom','$passwordn','$emailn','$date');
+    $res2=mysqli-query($cnx,$req);
+    if($res2==true)
+    ech"insertion avec succéé";
+    else ech"insertion échoué";
 }
 mysqli_close($cnx);
 ?>
